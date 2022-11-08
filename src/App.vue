@@ -1,5 +1,5 @@
 <template>
-  <Header :text="text" />
+  <Header @changeTitle="ubahText" :text="text" />
 </template>
 
 <script>
@@ -13,6 +13,11 @@ export default {
   data() {
     return {
       text: "ini adalah text dari data"
+    }
+  },
+  methods: {
+    ubahText(newText) {
+      this.text = newText;
     }
   }
 
