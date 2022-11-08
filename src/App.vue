@@ -1,14 +1,12 @@
 <template>
-  <div v-if="products.length">
-    <ul>
-      <li v-for="product in products" :key="product.id">
-        {{ product.title }} - {{ product.price }}
-      </li>
-    </ul>
-  </div>
-  <div v-else>
-    <p>Data Not Found</p>
-  </div>
+  <input type="text" v-model="cari" placeholder="Cari">
+
+  <ul>
+    <li v-for="product in cariData" :key="product.id">
+      {{ product.title }} - {{ product.price }}
+    </li>
+  </ul>
+
 </template>
 
 <script>
@@ -18,6 +16,7 @@ export default {
   name: 'App',
   data() {
     return {
+      cari: "",
       products: []
     };
   },
@@ -29,15 +28,13 @@ export default {
       { id: 4, title: "Product 4", price: 1000 }
     ];
   },
-  /* beforeCreate() {
-    console.log('Before Create')
-  },
-  beforeMount() {
-    console.log('Before Mount')
-  },
-  mounted() {
-    console.log('Mounted')
-  } */
+  computed: {
+    cariData() {
+      return this.products.filter((product) => {
+        return product.title.match(this.cari);
+      });
+    }
+  }
 };
 </script>
 
