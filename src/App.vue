@@ -1,5 +1,6 @@
 <template>
-  <a :href="url">Link</a>
+  <input type="text" v-model="nama">
+  {{ nama }}
 </template>
 
 <script>
@@ -9,7 +10,7 @@ export default {
   name: 'App',
   data() {
     return {
-      url: "https://afiv.com"
+      nama: "Afiv"
     };
   }
 }
